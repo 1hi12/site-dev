@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitation à notre mariage</title>
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
+    <style>
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        .navbar {
+            background-color: #d4a5a5;
+            padding: 10px 0;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .navbar a:hover {
+            background-color: #c08080;
+        }
+        .header {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #f0e6e6;
+            border-radius: 10px;
+        }
+        h1 {
+            color: #d4a5a5;
+            margin-bottom: 10px;
+        }
+        .date {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #8e7474;
+        }
+        .content {
+            background-color: #ffffff;
+            padding: 5px;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #888;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #d4a5a5;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        #countdown {
+            font-size: 1.2em;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .main-image {
+            width: 550px; /* Largeur fixée à 50 pixels */
+            height: auto; /* Hauteur automatique pour conserver les proportions */
+            display: block;
+            margin: 0 auto 2px;
+            border-radius: 1px;
+        }
+        
+    </style>
+</head>
+<body>
+    <nav  class="navbar">
+        <ul>
+            
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="list.php">Liste d'invités</a></li>
+        </ul>
+    </nav>
+
+    <div id="accueil" class="header">
+        <h1>Marie & Jean</h1>
+        <p class="date">12 Août 2025</p>
+    </div>
+    <div class="content">
+      
+        <img src="photo-mariage.jpeg" alt="photo de mariage" class="main-image">
+        
+        <p>Chers amis et famille,</p>
+        <p>Nous sommes ravis de vous inviter à célébrer notre union le 12 août 2025. Rejoignez-nous pour cette journée spéciale remplie d'amour et de joie.</p>
+        
+        <p>La cérémonie aura lieu à 14h, suivie d'une réception.</p>
+        <p>Lieu : Château des Fleurs, 1 Rue du Bonheur, 75000 Paris</p>
+        
+
+
+          
+        <div class="form-container" style="margin-top: 20px;">
+            <input type="text" id="name" placeholder="Votre nom" required>
+            <input type="email" id="email" placeholder="Votre email" required>
+            <input type="text" id="subject" placeholder="Sujet" required>
+            <textarea id="message" placeholder="Votre message" required></textarea>
+            <button onclick="sendMail()">Envoyer</button>
+        </div>
+        <div style="text-align: center;">
+            <a href="#" class="button">Confirmer votre présence</a>
+        </div>
+        <div id="countdown"></div>
+        
+       
+    </div>
+    <div class="footer">
+        <p>Nous avons hâte de partager ce moment avec vous !</p>
+        <p>Marie & Jean</p>
+    </div>
+
+    <script>
+        // Compte à rebours
+        const weddingDate = new Date("Aug 12, 2025 14:00:00").getTime();
+
+        const countdownFunction = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("countdown").innerHTML = `Compte à rebours : ${days}j ${hours}h ${minutes}m ${seconds}s`;
+
+            if (distance < 0) {
+                clearInterval(countdownFunction);
+                document.getElementById("countdown").innerHTML = "Le grand jour est arrivé !";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>

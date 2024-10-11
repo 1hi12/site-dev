@@ -1,0 +1,11 @@
+{
+    "name": "hadde/stage",
+    "autoload": {
+        "psr-4": {
+            "Hadde\\Stage\\": "src/"
+        }
+    },
+    "require": {
+        "phpmailer/phpmailer": "^6.9"
+    }
+}
